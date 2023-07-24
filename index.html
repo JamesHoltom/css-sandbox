@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CSS Sandbox</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="./css/page.css"></style>
+    <link rel="stylesheet" href="./css/3d.css"></style>
+  </head>
+  <body>
+    <header>CSS Sandbox</header>
+
+    <div class="container">
+      <div id="rotate-cube" class="cube">
+        <div class="face front">A</div>
+        <div class="face back">B</div>
+        <div class="face right">C</div>
+        <div class="face left">D</div>
+        <div class="face top">E</div>
+        <div class="face bottom">F</div>
+      </div>
+      <div id="additional-faces" class="cube"></div>
+    </div>
+
+    <p>Translate:</p>
+    <div class="inputs">
+      <div>
+        <input type="range" id="translate-x" min="-128" max="128" value="0" />
+        <br />
+        <span id="value-tx">X (0)</span>
+      </div>
+      <div>
+        <input type="range" id="translate-y" min="-128" max="128" value="0" />
+        <br />
+        <span id="value-ty">Y (0)</span>
+      </div>
+      <div>
+        <input type="range" id="translate-z" min="-128" max="128" value="0" />
+        <br />
+        <span id="value-tz">Z (0)</span>
+      </div>
+    </div>
+    <p>Rotate:</p>
+    <div class="inputs">
+      <div>
+        <input type="range" id="rotate-x" min="0" max="359" value="0" />
+        <br />
+        <span id="value-rx">X (0)</span>
+      </div>
+      <div>
+        <input type="range" id="rotate-y" min="0" max="359" value="0" />
+        <br />
+        <span id="value-ry">Y (0)</span>
+      </div>
+      <div>
+        <input type="range" id="rotate-z" min="0" max="359" value="0" />
+        <br />
+        <span id="value-rz">Z (0)</span>
+      </div>
+    </div>
+    <div>
+      <button id="add-face">Add Face</button>
+      <button id="clear-face">Clear All Faces</button>
+    </div>
+
+    <footer>Tool for experimenting with CSS3 features.</footer>
+
+    <script src="./index.js" defer></script>
+  </body>
+</html>
