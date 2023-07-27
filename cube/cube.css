@@ -1,0 +1,82 @@
+:root {
+  --cube-perspective: 800px;
+  --cube-container-width: 640px;
+  --cube-container-height: 480px;
+  --cube-size: 64px;
+  --cube-origin-x: calc((var(--cube-container-width) - var(--cube-size)) / 2);
+  --cube-origin-y: calc((var(--cube-container-height) - var(--cube-size)) / 2);
+  --cube-origin-z: calc(var(--cube-size) * -1);
+}
+
+@keyframes cube-animate {
+  from {
+    transform: translate3d(var(--cube-origin-x), var(--cube-origin-y), var(--cube-origin-z)) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+  }
+
+  50% {
+    transform: translate3d(var(--cube-origin-x), var(--cube-origin-y), var(--cube-origin-z)) rotateX(360deg) rotateY(180deg) rotateZ(270deg);
+  }
+
+  to {
+    transform: translate3d(var(--cube-origin-x), var(--cube-origin-y), var(--cube-origin-z)) rotateX(720deg) rotateY(360deg) rotateZ(0deg);
+  }
+}
+
+.tab[data-tab="cube"] > .container {
+  width: var(--cube-container-width);
+  height: var(--cube-container-height);
+  perspective: var(--cube-perspective);
+}
+
+.cube {
+  position: relative;
+  backface-visibility: hidden;
+  transform: translate3d(var(--cube-origin-x), var(--cube-origin-y), var(--cube-origin-z));
+  transform-origin: calc(var(--cube-size) * 0.5) calc(var(--cube-size) * 0.5) 0;
+  transform-style: preserve-3d;
+  transition: transform 1s;
+}
+
+.cube.animate {
+  animation: cube-animate 10s linear;
+  animation-direction: normal;
+  animation-iteration-count: infinite;
+}
+
+.cube > .face {
+  position: absolute;
+  width: var(--cube-size);
+  height: var(--cube-size);
+  line-height: var(--cube-size);
+  transform-origin: center;
+}
+
+.cube > .face.front {
+  background: linear-gradient(45deg, white, blue);
+  transform: rotateY(0deg) translateZ(calc(var(--cube-size) / 2));
+}
+
+.cube > .face.back {
+  background: linear-gradient(45deg, white, red);
+  transform: rotateY(180deg) translateZ(calc(var(--cube-size) / 2));
+}
+
+.cube > .face.right {
+  background: linear-gradient(45deg, white, green);
+  transform: rotateY(90deg) translateZ(calc(var(--cube-size) / 2));
+}
+
+.cube > .face.left {
+  background: linear-gradient(45deg, white, yellow);
+  transform: rotateY(270deg) translateZ(calc(var(--cube-size) / 2));
+}
+
+.cube > .face.top {
+  background: linear-gradient(45deg, white, orange);
+  transform: rotateX(90deg) translateZ(calc(var(--cube-size) / 2));
+}
+
+.cube > .face.bottom {
+  background: linear-gradient(45deg, white, purple);
+  transform: rotateX(270deg) translateZ(calc(var(--cube-size) / 2));
+}

@@ -4,67 +4,117 @@
     <title>CSS Sandbox</title>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="stylesheet" href="./css/page.css"></style>
-    <link rel="stylesheet" href="./css/3d.css"></style>
+    <link rel="stylesheet" href="./index.css"></style>
+    <link rel="stylesheet" href="./cube/cube.css"></style>
+    <link rel="stylesheet" href="./world/world.css"></style>
   </head>
   <body>
     <header>CSS Sandbox</header>
 
-    <div class="container">
-      <div id="rotate-cube" class="cube">
-        <div class="face front">A</div>
-        <div class="face back">B</div>
-        <div class="face right">C</div>
-        <div class="face left">D</div>
-        <div class="face top">E</div>
-        <div class="face bottom">F</div>
-      </div>
-      <div id="additional-faces" class="cube"></div>
+    <div class="tablist">
+      <span class="tabitem" data-tab="cube" data-selected>3D Cube</span><span class="tabitem" data-tab="world">3D World</span>
     </div>
+    <div class="tab" data-tab="cube">
+      <div class="container">
+        <div id="rotate-cube" class="cube">
+          <div class="face front">A</div>
+          <div class="face back">B</div>
+          <div class="face right">C</div>
+          <div class="face left">D</div>
+          <div class="face top">E</div>
+          <div class="face bottom">F</div>
+        </div>
+        <div id="additional-faces" class="cube"></div>
+      </div>
 
-    <p>Translate:</p>
-    <div class="inputs">
-      <div>
-        <input type="range" id="translate-x" min="-128" max="128" value="0" />
-        <br />
-        <span id="value-tx">X (0)</span>
+      <div class="input">
+        <p>Translate:</p>
+        <div>
+          <input type="range" id="translate-x" min="-1024" max="1024" value="0" />
+          <br />
+          <span id="value-tx">X (0)</span>
+        </div>
+        <div>
+          <input type="range" id="translate-y" min="-1024" max="1024" value="0" />
+          <br />
+          <span id="value-ty">Y (0)</span>
+        </div>
+        <div>
+          <input type="range" id="translate-z" min="-1024" max="1024" value="0" />
+          <br />
+          <span id="value-tz">Z (0)</span>
+        </div>
       </div>
-      <div>
-        <input type="range" id="translate-y" min="-128" max="128" value="0" />
-        <br />
-        <span id="value-ty">Y (0)</span>
+      <div class="input">
+        <p>Rotate:</p>
+        <div>
+          <input type="range" id="rotate-x" min="0" max="359" value="0" />
+          <br />
+          <span id="value-rx">X (0)</span>
+        </div>
+        <div>
+          <input type="range" id="rotate-y" min="0" max="359" value="0" />
+          <br />
+          <span id="value-ry">Y (0)</span>
+        </div>
+        <div>
+          <input type="range" id="rotate-z" min="0" max="359" value="0" />
+          <br />
+          <span id="value-rz">Z (0)</span>
+        </div>
       </div>
-      <div>
-        <input type="range" id="translate-z" min="-128" max="128" value="0" />
-        <br />
-        <span id="value-tz">Z (0)</span>
+      <div class="input">
+        <button id="add-face">Add Face</button>
+        <button id="remove-face">Remove Face</button>
+        <button id="clear-face">Clear All Faces</button>
+        <button id="animate-cube" data-value="off">Animate: OFF</button>
       </div>
     </div>
-    <p>Rotate:</p>
-    <div class="inputs">
-      <div>
-        <input type="range" id="rotate-x" min="0" max="359" value="0" />
-        <br />
-        <span id="value-rx">X (0)</span>
+    <div class="tab" data-tab="world">
+      <div class="container">
+        <span id="world-debug"></span>
+        <div id="world-camera">
+          <div id="world" class="group">
+            <div class="face"></div>
+          </div>
+        </div>
       </div>
-      <div>
-        <input type="range" id="rotate-y" min="0" max="359" value="0" />
-        <br />
-        <span id="value-ry">Y (0)</span>
+      <div class="input">
+        <p>Mouse Sensitivity:</p>
+        <div>
+          <input type="range" id="mouse-sensitivity" min="0.05" max="1" value="0.25" step="0.05" />
+          <br />
+          <span id="value-ms">(0.25)</span>
+        </div>
       </div>
-      <div>
-        <input type="range" id="rotate-z" min="0" max="359" value="0" />
-        <br />
-        <span id="value-rz">Z (0)</span>
+      <div class="input">
+        <p>Player Speed:</p>
+        <div>
+          <input type="range" id="player-speed" min="0.25" max="5" value="2.5" step="0.25" />
+          <br />
+          <span id="value-speed">(2.5)</span>
+        </div>
       </div>
-    </div>
-    <div>
-      <button id="add-face">Add Face</button>
-      <button id="clear-face">Clear All Faces</button>
+      <div class="input">
+        <p>Perspective:</p>
+        <div>
+          <input type="range" id="perspective" min="100" max="1000" value="300" step="25" />
+          <br />
+          <span id="value-perspective">(800)</span>
+        </div>
+      </div>
+      <p>
+        Controls:<br />
+        WASD: Move player<br />
+        Space/C: Move up/down<br />
+        Shift: Crouch
+      </p>
     </div>
 
     <footer>Tool for experimenting with CSS3 features.</footer>
 
     <script src="./index.js" defer></script>
+    <script src="./cube/cube.js" defer></script>
+    <script src="./world/world.js" defer></script>
   </body>
 </html>

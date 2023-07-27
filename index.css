@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+:root {
+  --bar-height: 40px;
+  --tab-width: 720px;
+  --default-theme-primary-colour: #577BB5;
+  --default-theme-secondary-colour: #A5B8D6;
+}
+
+html, body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+}
+
+header, footer {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  height: var(--bar-height);
+  background: linear-gradient(0.25turn, var(--default-theme-primary-colour) 66%, var(--default-theme-secondary-colour));
+  padding-left: 8px;
+  font-family: 'Open Sans', sans-serif;
+  color: white;
+}
+
+.section > h1 {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.tab {
+  border: 3px solid darkgray;
+  padding: 6px 0;
+  width: var(--tab-width);
+}
+
+.tablist {
+  border: 3px solid darkgray;
+  width: var(--tab-width);
+}
+
+.tabitem {
+  padding: 0 6px;
+  cursor: pointer;
+}
+
+.tabitem:hover {
+  background-color: lightgray;
+}
+
+.tabitem[data-selected] {
+  background-color: darkgray;
+}
+
+.tabitem:nth-child(n + 1) {
+  border-left: 1px solid darkgray;
+}
+
+.tab[data-tab="world"] {
+  display: none;
+}
+
+.input {
+  display: flex;
+  width: 660px;
+  margin: 0 6px;
+}
+
+.input > p {
+  width: 200px;
+}
+
+.input > div {
+  width: 164px;
+}
+
+.input > div > span {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+}
+
+.input > button {
+  margin-right: 6px;
+}
+
+.container {
+  border: 10px solid darkgray;
+  margin: 0 6px;
+  overflow: hidden;
+  perspective-origin: center;
+}
+
+footer {
+  margin-top: auto;
+}

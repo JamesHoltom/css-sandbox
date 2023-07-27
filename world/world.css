@@ -1,0 +1,66 @@
+:root {
+  --world-perspective: 800px;
+  --world-container-width: 640px;
+  --world-container-height: 480px;
+  --world-origin-x: calc(var(--world-container-width) * 0.5);
+  --world-origin-y: var(--world-container-height);
+  --world-origin-z: calc(var(--world-container-height) * -1);
+}
+
+@keyframes test-animate {
+  from {
+    transform: rotateY(0deg);
+  }
+
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+.tab[data-tab="world"] > .container {
+  width: var(--world-container-width);
+  height: var(--world-container-height);
+  perspective: var(--world-perspective);
+  overflow: hidden;
+}
+
+#world-camera {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-style: preserve-3d;
+}
+
+#world-debug {
+  z-index: 99999;
+}
+
+#world {
+  transform: translateY(50px);
+}
+
+.group {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-style: preserve-3d;
+}
+
+#world > .face {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1000px;
+  height: 1000px;
+  line-height: 1000px;
+  backface-visibility: hidden;
+  transform: translate3d(-500px, -500px, 0) rotateX(90deg);
+  transform-origin: center;
+  transform-style: preserve-3d;
+  background: conic-gradient(lightgray, darkgray);
+  animation-iteration-count: infinite;
+}
+
+#world-debug {
+  position: absolute;
+}
