@@ -2,7 +2,7 @@
 
 :root {
   --bar-height: 40px;
-  --tab-width: 720px;
+  --tab-width: 1024px;
   --default-theme-primary-colour: #577BB5;
   --default-theme-secondary-colour: #A5B8D6;
 }
@@ -30,6 +30,7 @@ header, footer {
 }
 
 .tab {
+  position: relative;
   border: 3px solid darkgray;
   padding: 6px 0;
   width: var(--tab-width);
@@ -62,8 +63,7 @@ header, footer {
 }
 
 .input {
-  display: flex;
-  width: 660px;
+  display: inline-block;
   margin: 0 6px;
 }
 
@@ -72,13 +72,21 @@ header, footer {
 }
 
 .input > div {
-  width: 164px;
+  display: block;
+  position: relative;
+  width: 240px;
+  height: 30px;
 }
 
-.input > div > span {
-  display: inline-block;
-  width: 100%;
-  text-align: center;
+.input input {
+  position: absolute;
+  top: 0;
+}
+
+.input input[id^="value-"] {
+  right: 0;
+  width: 64px;
+  height: 16px;
 }
 
 .input > button {
