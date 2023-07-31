@@ -54,4 +54,4 @@ export default class KeyBindings {
   set enabled(value) {
     this._enabled = (value === true);
   }
-}
+};

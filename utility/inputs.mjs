@@ -48,4 +48,4 @@ export default class InputList {
       this._inputs[name].numberInput.value = value;
     }
   }
-}
+};

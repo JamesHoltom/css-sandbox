@@ -11,127 +11,157 @@
   <body>
     <header>CSS Sandbox</header>
 
-    <div class="tablist">
-      <span class="tabitem" data-tab="cube" data-selected>3D Cube</span><span class="tabitem" data-tab="world">3D World</span>
-    </div>
-    <div class="tab" data-tab="cube">
-      <div class="container">
-        <div id="rotate-cube" class="cube">
-          <div class="face front">A</div>
-          <div class="face back">B</div>
-          <div class="face right">C</div>
-          <div class="face left">D</div>
-          <div class="face top">E</div>
-          <div class="face bottom">F</div>
-        </div>
-        <div id="additional-faces" class="cube"></div>
+    <div class="page-container">
+      <div class="tablist">
+        <span class="tabitem" data-tab="cube">3D Cube</span>
+        <span class="tabitem" data-tab="world">3D World</span>
       </div>
-      <hr />
-      <div class="input">
-        <p>Translate:</p>
-        <div>
-          <input type="range" id="input-cube-tx" min="-1024" max="1024" />
-          <input type="number" id="value-cube-tx" min="-1024" max="1024" />
+      <div class="tab" data-tab="cube">
+        <div class="container">
+          <div id="rotate-cube" class="cube">
+            <div class="face front">A</div>
+            <div class="face back">B</div>
+            <div class="face right">C</div>
+            <div class="face left">D</div>
+            <div class="face top">E</div>
+            <div class="face bottom">F</div>
+          </div>
+          <div id="additional-faces" class="cube"></div>
         </div>
-        <div>
-          <input type="range" id="input-cube-ty" min="-1024" max="1024" />
-          <input type="number" id="value-cube-ty" min="-1024" max="1024" />
-        </div>
-        <div>
-          <input type="range" id="input-cube-tz" min="-1024" max="1024" />
-          <input type="number" id="value-cube-tz" min="-1024" max="1024" />
-        </div>
-      </div>
-      <div class="input">
-        <p>Rotate:</p>
-        <div>
-          <input type="range" id="input-cube-rx" min="0" max="359" />
-          <input type="number" id="value-cube-rx" min="0" max="359" />
-        </div>
-        <div>
-          <input type="range" id="input-cube-ry" min="0" max="359" />
-          <input type="number" id="value-cube-ry" min="0" max="359" />
-        </div>
-        <div>
-          <input type="range" id="input-cube-rz" min="0" max="359" />
-          <input type="number" id="value-cube-rz" min="0" max="359" />
-        </div>
-      </div>
-
-      <hr />
-      <button id="cube-add-face">Add Face</button>
-      <button id="cube-remove-face">Remove Face</button>
-      <button id="cube-clear-face">Clear All Faces</button>
-      <button id="cube-animate-cube" data-value="off">Animate: OFF</button>
-    </div>
-    <div class="tab" data-tab="world">
-      <div class="container">
-        <span id="world-debug"></span>
-        <div id="world-camera">
-          <div id="world" class="group">
-            <div class="face"></div>
+        <hr />
+        <div class="input">
+          <p>Translate:</p>
+          <div>
+            <input type="range" id="input-cube-tx" min="-1024" max="1024" />
+            <input type="number" id="value-cube-tx" min="-1024" max="1024" />
+          </div>
+          <div>
+            <input type="range" id="input-cube-ty" min="-1024" max="1024" />
+            <input type="number" id="value-cube-ty" min="-1024" max="1024" />
+          </div>
+          <div>
+            <input type="range" id="input-cube-tz" min="-1024" max="1024" />
+            <input type="number" id="value-cube-tz" min="-1024" max="1024" />
           </div>
         </div>
-      </div>
-      <div id="world-edit">
-        <span>Position:</span>
-        <input type="number" id="input-world-tx" placeholder="X" disabled />
-        <input type="number" id="input-world-ty" placeholder="Y" disabled />
-        <input type="number" id="input-world-tz" placeholder="Z" disabled />
-
-        <span>Rotation:</span>
-        <input type="range" id="input-world-rx" min="0" max="360" />
-        <input type="number" id="input-world-rx" placeholder="X" min="0" max="360" disabled />
-        <input type="range" id="input-world-ry" min="0" max="360" />
-        <input type="number" id="input-world-ry" placeholder="Y" min="0" max="360" disabled />
-        <input type="range" id="input-world-rz" min="0" max="360" />
-        <input type="number" id="input-world-rz" placeholder="Z" min="0" max="360" disabled />
-
-        <span>Colour/Texture:</span>
-        <input type="text" id="input-world-texture" placeholder="Texture" disabled />
-        <input type="range" id="input-world-cr" min="0" max="255" />
-        <input type="number" id="input-world-cr" placeholder="Red" min="0" max="255" disabled />
-        <input type="range" id="input-world-cg" min="0" max="255" />
-        <input type="number" id="input-world-cg" placeholder="Green" min="0" max="255" disabled />
-        <input type="range" id="input-world-cb" min="0" max="255" />
-        <input type="number" id="input-world-cb" placeholder="Blue" min="0" max="255" disabled />
-        <input type="range" id="input-world-ca" min="0" max="255" />
-        <input type="number" id="input-world-ca" placeholder="Alpha" min="0" max="255" disabled />
+        <div class="input">
+          <p>Rotate:</p>
+          <div>
+            <input type="range" id="input-cube-rx" min="0" max="359" />
+            <input type="number" id="value-cube-rx" min="0" max="359" />
+          </div>
+          <div>
+            <input type="range" id="input-cube-ry" min="0" max="359" />
+            <input type="number" id="value-cube-ry" min="0" max="359" />
+          </div>
+          <div>
+            <input type="range" id="input-cube-rz" min="0" max="359" />
+            <input type="number" id="value-cube-rz" min="0" max="359" />
+          </div>
+        </div>
 
         <hr />
-        <button id="world-add-face">Add Face</button>
-        <button id="world-remove-face" disabled>Remove Face</button>
+        <button id="cube-add-face">Add Face</button>
+        <button id="cube-remove-face">Remove Face</button>
+        <button id="cube-clear-face">Clear All Faces</button>
+        <button id="cube-animate-cube" data-value="off">Animate: OFF</button>
       </div>
-      <div class="world-modelist">
-        <span class="world-mode" data-mode="play" data-selected>Play</span><span class="world-mode" data-mode="edit">Edit</span>
-      </div>
+      <div class="tab" data-tab="world">
+        <div class="container">
+          <span id="world-debug"></span>
+          <div id="world-camera">
+            <div id="world"></div>
+          </div>
+        </div>
+        <div id="world-edit">
+          <div id="world-nodemap"></div>
 
-      <hr />
-      <div class="input">
-        <p>Mouse Sensitivity:</p>
-        <div>
-          <input type="range" id="input-world-ms" min="0.01" max="1" step="0.01" />
-          <input type="number" id="value-world-ms" min="0.01" max="1" step="0.01" />
+          <hr />
+          <button id="world-add-face">Add Face</button>
+          <button id="world-remove-face" disabled>Remove Face</button>
+
+          <hr />
+          <div id="world-edit-parameters" class="input">
+            <span>Position:</span>
+            <div>
+              <input type="number" id="input-world-tx" placeholder="X" disabled />
+            </div>
+            <div>
+              <input type="number" id="input-world-ty" placeholder="Y" disabled />
+            </div>
+            <div>
+              <input type="number" id="input-world-tz" placeholder="Z" disabled />
+            </div>
+
+            <span>Rotation:</span>
+            <div>
+              <input type="range" id="input-world-rx" min="0" max="360" disabled />
+              <input type="number" id="value-world-rx" placeholder="X" min="0" max="360" disabled />
+            </div>
+            <div>
+              <input type="range" id="input-world-ry" min="0" max="360" disabled />
+              <input type="number" id="value-world-ry" placeholder="Y" min="0" max="360" disabled />
+            </div>
+            <div>
+              <input type="range" id="input-world-rz" min="0" max="360" disabled />
+              <input type="number" id="value-world-rz" placeholder="Z" min="0" max="360" disabled />
+            </div>
+
+            <span>Colour/Texture:</span>
+            <div>
+              <input type="text" id="input-world-texture" placeholder="Texture" disabled />
+            </div>
+            <div>
+              <input type="range" id="input-world-cr" min="0" max="255" disabled />
+              <input type="number" id="value-world-cr" placeholder="Red" min="0" max="255" disabled />
+            </div>
+            <div>
+              <input type="range" id="input-world-cg" min="0" max="255" disabled />
+              <input type="number" id="value-world-cg" placeholder="Green" min="0" max="255" disabled />
+            </div>
+            <div>
+              <input type="range" id="input-world-cb" min="0" max="255" disabled />
+              <input type="number" id="value-world-cb" placeholder="Blue" min="0" max="255" disabled />
+            </div>
+            <div>
+              <input type="range" id="input-world-ca" min="0" max="255" disabled />
+              <input type="number" id="value-world-ca" placeholder="Alpha" min="0" max="255" disabled />
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="input">
-        <p>Perspective:</p>
-        <div>
-          <input type="range" id="input-world-perspective" min="100" max="1000" />
-          <input type="number" id="value-world-perspective" min="100" max="1000" />
+        <div class="tablist">
+          <span class="tabitem" data-tab="play">Play</span>
+          <span class="tabitem" data-tab="view">View</span>
+          <span class="tabitem" data-tab="edit">Edit</span>
         </div>
+
+        <hr />
+        <div class="input">
+          <p>Mouse Sensitivity:</p>
+          <div>
+            <input type="range" id="input-world-ms" min="0.01" max="1" step="0.01" />
+            <input type="number" id="value-world-ms" min="0.01" max="1" step="0.01" />
+          </div>
+        </div>
+        <div class="input">
+          <p>Perspective:</p>
+          <div>
+            <input type="range" id="input-world-perspective" min="100" max="1000" />
+            <input type="number" id="value-world-perspective" min="100" max="1000" />
+          </div>
+        </div>
+        <p>
+          Controls:<br />
+          WASD: Move player<br />
+          Space/C: Move up/down<br />
+          Shift: Crouch
+        </p>
       </div>
-      <p>
-        Controls:<br />
-        WASD: Move player<br />
-        Space/C: Move up/down<br />
-        Shift: Crouch
-      </p>
     </div>
 
     <footer>Tool for experimenting with CSS3 features.</footer>
 
-    <script src="./index.js" defer></script>
+    <script src="./index.mjs" type="module" defer></script>
     <script src="./cube/cube.mjs" type="module" defer></script>
     <script src="./world/world.mjs" type="module" defer></script>
   </body>

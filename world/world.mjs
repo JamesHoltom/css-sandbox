@@ -1,12 +1,15 @@
 import InputList from "../utility/inputs.mjs";
 import KeyBindings from "../utility/keybinds.mjs";
+import TabList from "../utility/tabs.mjs";
+import MapNode from "./mapnode.mjs";
 
 const World = (function() {
   // HTML Elements
   const container = document.querySelector(".tab[data-tab='world'] > .container");
-  const debug = document.getElementById("world-debug");
+  const editor = document.getElementById("world-edit");
   const world = document.getElementById("world");
   const camera = document.getElementById("world-camera");
+  const debug = document.getElementById("world-debug");
   const inputs = new InputList("world", 
     ["tx", 0], ["ty", 0], ["tz", 0],
     ["rx", 0], ["ry", 0], ["rz", 0],
@@ -15,14 +18,30 @@ const World = (function() {
     ["ms", 0.25], ["perspective", 300, setPerspective]
   );
   const keyBindings = new KeyBindings(
-    ["left", "a"], 
-    ["right", "d"], 
-    ["forward", "w"], 
-    ["backward", "s"], 
-    ["up", " "], 
-    ["down", "c"], 
+    ["left", "a"],
+    ["right", "d"],
+    ["forward", "w"],
+    ["backward", "s"],
+    ["up", " "],
+    ["down", "c"],
     ["crouch", "Shift"]
   );
+  const tabs = new TabList(
+    [ "play", () => {}, () => {} ],
+    [ "view", () => {}, () => {} ],
+    [
+      "edit",
+      () => {
+        world.dataset.editing = true;
+        editor.style.display = "block";
+      },
+      () => {
+        delete world.dataset.editing;
+        editor.style.display = "none";
+      }
+    ]
+  );
+  const rootNode = new MapNode("root", world);
   
   // World Data
   const playerData = {
@@ -147,6 +166,8 @@ const World = (function() {
     document.addEventListener("pointerlockchange", checkPointerLock);
     setPerspective(300);
     updateWorld();
+
+    rootNode.addFace("ground");
   }
 
   return {
