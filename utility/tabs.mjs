@@ -6,10 +6,17 @@ export default class TabList {
     this.addTabs(...tabs);
 
     if (this._currentTab === null) {
-      const name = tabs[0][0];
-
-      this._currentTab = this._tabs[name].elem;
+      this._currentTab = this._tabs[tabs[0][0]].elem;
       this._currentTab.dataset.selected = true;
+    }
+
+    const name = this._currentTab.dataset.tab;
+
+    if (this._tabs[name].onOpen) {
+      this._tabs[name].onOpen?.();
+    }
+    else {
+      document.querySelector(`.tab[data-tab="${name}"]`).style.display = "block";
     }
   }
 

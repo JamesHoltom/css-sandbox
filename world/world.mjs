@@ -7,6 +7,7 @@ const World = (function() {
   // HTML Elements
   const container = document.querySelector(".tab[data-tab='world'] > .container");
   const editor = document.getElementById("world-edit");
+  const nodeMap = document.getElementById("world-nodemap");
   const world = document.getElementById("world");
   const camera = document.getElementById("world-camera");
   const debug = document.getElementById("world-debug");
@@ -27,7 +28,17 @@ const World = (function() {
     ["crouch", "Shift"]
   );
   const tabs = new TabList(
-    [ "play", () => {}, () => {} ],
+    [
+      "play",
+      () => {
+        container.addEventListener("click", setPointerLock);
+        document.addEventListener("pointerlockchange", checkPointerLock);
+      },
+      () => {
+        container.removeEventListener("click", setPointerLock);
+        document.removeEventListener("pointerlockchange", checkPointerLock);
+      }
+    ],
     [ "view", () => {}, () => {} ],
     [
       "edit",
@@ -41,7 +52,7 @@ const World = (function() {
       }
     ]
   );
-  const rootNode = new MapNode("root", world);
+  const rootNode = MapNode.addRootNode(world, nodeMap);
   
   // World Data
   const playerData = {
@@ -162,8 +173,6 @@ const World = (function() {
   }
   
   function init() {
-    container.addEventListener("click", setPointerLock);
-    document.addEventListener("pointerlockchange", checkPointerLock);
     setPerspective(300);
     updateWorld();
 

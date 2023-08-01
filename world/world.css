@@ -6,13 +6,23 @@
   --world-origin-z: calc(var(--world-container-height) * -1);
 }
 
-@keyframes node-selection {
+@keyframes node-selected {
   from {
-    filter: none;
+    border: 1px solid darkgoldenrod;
   }
 
   to {
-    filter: invert() brightness(1.5);
+    border: 6px solid orange;
+  }
+}
+
+@keyframes node-hover {
+  from {
+    border: 1px solid darkgreen;
+  }
+
+  to {
+    border: 6px solid greenyellow;
   }
 }
 
@@ -37,6 +47,7 @@
 #world-debug {
   position: absolute;
   z-index: 99999;
+  user-select: none;
 }
 
 #world-edit {
@@ -71,11 +82,12 @@
   top: 50%;
   left: 50%;
   backface-visibility: hidden;
-  transform-origin: center;
+  transform-origin: center center;
   transform-style: preserve-3d;
 }
 
 #world .world-node[data-node-type="face"] {
+  box-sizing: border-box;
   width: 100px;
   height: 100px;
   line-height: 100px;
@@ -83,7 +95,20 @@
   background: radial-gradient(darkgray, lightgray);
 }
 
-#world[data-editing] .world-node:hover[data-node-type="face"],
- #world[data-editing] .world-node:hover[data-node-type="sprite"] {
-  animation: node-selection 0.3s ease-in-out infinite alternate;
+#world[data-editing] .world-node[data-selected]:not([data-node-type="group"]) {
+  animation: node-selected 0.4s linear infinite alternate;
+}
+
+#world[data-editing] .world-node:hover[data-node-type="face"]:not([data-selected]),
+ #world[data-editing] .world-node:hover[data-node-type="sprite"]:not([data-selected]) {
+  animation: node-hover 0.4s linear infinite alternate;
+}
+
+#world-nodemap {
+  margin-top: 6px;
+}
+
+#world-nodemap .world-node {
+  border: 1px solid darkgray;
+  padding: 6px;
 }
