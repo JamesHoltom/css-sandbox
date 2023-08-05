@@ -20,6 +20,13 @@ Further developments could include:
 
 * Set up a container for experimenting with parallax scrolling.
 
+## Running
+
+It's recommended to host *index.html* on a server, with 2 options being:
+
+* Installing [http-server](https://www.npmjs.com/package/http-server) through NPM.
+* Using the [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) extension in VSCode.
+
 ## Example world
 
 ```json
