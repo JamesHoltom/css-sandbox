@@ -19,3 +19,9 @@ Further developments could include:
 *Parallax*:
 
 * Set up a container for experimenting with parallax scrolling.
+
+## Example world
+
+```json
+{"id":"0","type":"group","translation":{"x":0,"y":0,"z":0},"rotation":{"x":0,"y":0,"z":0},"size":{"w":200,"h":200},"colour":{"r":255,"g":0,"b":0,"a":255},"children":[{"id":"1","type":"face","translation":{"x":0,"y":50,"z":0},"rotation":{"x":90,"y":0,"z":0},"size":{"w":200,"h":200},"colour":{"r":255,"g":0,"b":0,"a":255},"children":[]},{"id":"2","type":"face","translation":{"x":0,"y":0,"z":-100},"rotation":{"x":0,"y":0,"z":0},"size":{"w":200,"h":100},"colour":{"r":0,"g":255,"b":0,"a":255},"children":[]},{"id":"3","type":"face","translation":{"x":0,"y":0,"z":100},"rotation":{"x":180,"y":0,"z":0},"size":{"w":200,"h":100},"colour":{"r":0,"g":255,"b":255,"a":255},"children":[]},{"id":"4","type":"face","translation":{"x":-100,"y":0,"z":0},"rotation":{"x":0,"y":90,"z":0},"size":{"w":200,"h":100},"colour":{"r":0,"g":0,"b":255,"a":255},"children":[]},{"id":"5","type":"face","translation":{"x":100,"y":0,"z":0},"rotation":{"x":0,"y":270,"z":0},"size":{"w":200,"h":100},"colour":{"r":255,"g":0,"b":255,"a":255},"children":[]},{"id":"6","type":"face","translation":{"x":0,"y":-50,"z":0},"rotation":{"x":270,"y":0,"z":0},"size":{"w":200,"h":200},"colour":{"r":255,"g":255,"b":0,"a":255},"children":[]}]}
+```
