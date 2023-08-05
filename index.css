@@ -89,7 +89,7 @@ header, footer {
   top: 0;
 }
 
-.input input[id^="value-"] {
+.input input[id^="value-"]:not(:only-child) {
   right: 0;
   width: 64px;
   height: 16px;

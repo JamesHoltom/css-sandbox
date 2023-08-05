@@ -68,6 +68,9 @@
       </div>
       <div class="tab" data-tab="world">
         <div class="container">
+          <div id="world-pause">
+            <span>Click to play</span>
+          </div>
           <span id="world-debug"></span>
           <div id="world-camera">
             <div id="world"></div>
@@ -77,62 +80,77 @@
           <div id="world-nodemap"></div>
 
           <hr />
-          <button id="world-add-face">Add Face</button>
-          <button id="world-remove-face" disabled>Remove Face</button>
+          <button id="world-add-group" disabled>Add Group</button>
+          <button id="world-add-face" disabled>Add Face</button>
+          <button id="world-remove-node" disabled>Remove Node</button>
+          <button id="world-deselect-node" disabled>Deselect Node</button>
 
           <hr />
           <div id="world-edit-parameters" class="input">
             <span>Position:</span>
             <div>
-              <input type="number" id="input-world-tx" placeholder="X" disabled />
+              <input type="number" id="input-nodemap-tx" placeholder="X" disabled />
             </div>
             <div>
-              <input type="number" id="input-world-ty" placeholder="Y" disabled />
+              <input type="number" id="input-nodemap-ty" placeholder="Y" disabled />
             </div>
             <div>
-              <input type="number" id="input-world-tz" placeholder="Z" disabled />
+              <input type="number" id="input-nodemap-tz" placeholder="Z" disabled />
             </div>
 
             <span>Rotation:</span>
             <div>
-              <input type="range" id="input-world-rx" min="0" max="360" disabled />
-              <input type="number" id="value-world-rx" placeholder="X" min="0" max="360" disabled />
+              <input type="range" id="input-nodemap-rx" min="0" max="360" disabled />
+              <input type="number" id="value-nodemap-rx" placeholder="X" min="0" max="360" disabled />
             </div>
             <div>
-              <input type="range" id="input-world-ry" min="0" max="360" disabled />
-              <input type="number" id="value-world-ry" placeholder="Y" min="0" max="360" disabled />
+              <input type="range" id="input-nodemap-ry" min="0" max="360" disabled />
+              <input type="number" id="value-nodemap-ry" placeholder="Y" min="0" max="360" disabled />
             </div>
             <div>
-              <input type="range" id="input-world-rz" min="0" max="360" disabled />
-              <input type="number" id="value-world-rz" placeholder="Z" min="0" max="360" disabled />
+              <input type="range" id="input-nodemap-rz" min="0" max="360" disabled />
+              <input type="number" id="value-nodemap-rz" placeholder="Z" min="0" max="360" disabled />
             </div>
 
-            <span>Colour/Texture:</span>
+            <span>Size:</span>
             <div>
-              <input type="text" id="input-world-texture" placeholder="Texture" disabled />
+              <input type="number" id="value-nodemap-width" placeholder="Width" min="0.01" disabled />
             </div>
             <div>
-              <input type="range" id="input-world-cr" min="0" max="255" disabled />
-              <input type="number" id="value-world-cr" placeholder="Red" min="0" max="255" disabled />
+              <input type="number" id="value-nodemap-height" placeholder="Height" min="0.01" disabled />
+            </div>
+
+            <span>Colour:</span>
+            <div>
+              <input type="range" id="input-nodemap-cr" min="0" max="255" disabled />
+              <input type="number" id="value-nodemap-cr" placeholder="Red" min="0" max="255" disabled />
             </div>
             <div>
-              <input type="range" id="input-world-cg" min="0" max="255" disabled />
-              <input type="number" id="value-world-cg" placeholder="Green" min="0" max="255" disabled />
+              <input type="range" id="input-nodemap-cg" min="0" max="255" disabled />
+              <input type="number" id="value-nodemap-cg" placeholder="Green" min="0" max="255" disabled />
             </div>
             <div>
-              <input type="range" id="input-world-cb" min="0" max="255" disabled />
-              <input type="number" id="value-world-cb" placeholder="Blue" min="0" max="255" disabled />
+              <input type="range" id="input-nodemap-cb" min="0" max="255" disabled />
+              <input type="number" id="value-nodemap-cb" placeholder="Blue" min="0" max="255" disabled />
             </div>
             <div>
-              <input type="range" id="input-world-ca" min="0" max="255" disabled />
-              <input type="number" id="value-world-ca" placeholder="Alpha" min="0" max="255" disabled />
+              <input type="range" id="input-nodemap-ca" min="0" max="255" disabled />
+              <input type="number" id="value-nodemap-ca" placeholder="Alpha" min="0" max="255" disabled />
             </div>
           </div>
         </div>
+        <div id="world-saveload">
+          <button id="world-save">Save World</button>
+          <button id="world-load">Load World</button>
+          <button id="world-reset">Reset</button>
+          
+          <hr />
+          <textarea id="world-savedata"></textarea>
+        </div>
         <div class="tablist">
           <span class="tabitem" data-tab="play">Play</span>
-          <span class="tabitem" data-tab="view">View</span>
           <span class="tabitem" data-tab="edit">Edit</span>
+          <span class="tabitem" data-tab="saveload">Save/Load</span>
         </div>
 
         <hr />
@@ -159,7 +177,7 @@
       </div>
     </div>
 
-    <footer>Tool for experimenting with CSS3 features.</footer>
+    <footer>Sandbox for experimenting with CSS3 features.</footer>
 
     <script src="./index.mjs" type="module" defer></script>
     <script src="./cube/cube.mjs" type="module" defer></script>

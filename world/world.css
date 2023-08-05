@@ -29,7 +29,6 @@
 .tab[data-tab="world"] > .container {
   width: var(--world-container-width);
   height: var(--world-container-height);
-  overflow: hidden;
 }
 
 .tab[data-tab="world"] > .tablist {
@@ -37,27 +36,39 @@
   margin: 0 6px;
 }
 
-#world-camera {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform-style: preserve-3d;
-}
-
 #world-debug {
   position: absolute;
+  background: rgb(255 255 255 / .75);
   z-index: 99999;
   user-select: none;
 }
 
-#world-edit {
+#world-pause {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background: rgb(33 33 33 / .65);
+  z-index: 999999;
+}
+
+#world-pause > span {
+  color: white;
+  font-weight: bold;
+  user-select: none;
+}
+
+#world-edit,
+ #world-saveload {
   display: none;
   position: absolute;
   top: 0;
   right: 0;
   width: 256px;
-  height: 100%;
-  padding-left: 6px;
+  height: calc(100% - 12px);
+  padding: 6px;
   border-left: 3px solid darkgray;
   background-color: white;
 }
@@ -77,22 +88,30 @@
   transform-style: preserve-3d;
 }
 
-#world .world-node {
+#world-camera {
   position: absolute;
   top: 50%;
   left: 50%;
+  transform-style: preserve-3d;
+}
+
+#world .world-node {
+  position: absolute;
+  top: -50%;
+  left: -50%;
   backface-visibility: hidden;
-  transform-origin: center center;
+  transform-origin: center center 0;
   transform-style: preserve-3d;
 }
 
 #world .world-node[data-node-type="face"] {
   box-sizing: border-box;
-  width: 100px;
-  height: 100px;
-  line-height: 100px;
-  transform: translate3d(-50px, -50px, 0) rotateX(90deg);
-  background: radial-gradient(darkgray, lightgray);
+}
+
+#world .world-node[data-node-type="group"] {
+  width: 0;
+  height: 0;
+  line-height: 0;
 }
 
 #world[data-editing] .world-node[data-selected]:not([data-node-type="group"]) {
@@ -104,11 +123,19 @@
   animation: node-hover 0.4s linear infinite alternate;
 }
 
-#world-nodemap {
-  margin-top: 6px;
-}
-
 #world-nodemap .world-node {
   border: 1px solid darkgray;
   padding: 6px;
+  background-color: white;
+  user-select: none;
+}
+
+#world-nodemap .world-node[data-selected] {
+  background-color: darkgray;
+}
+
+#world-saveload textarea {
+  width: calc(100% - 12px);
+  height: 640px;
+  resize: none;
 }

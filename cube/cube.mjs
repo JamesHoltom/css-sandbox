@@ -9,8 +9,8 @@ const Cube = (function() {
   const clearFaceBtn = document.getElementById("cube-clear-face");
   const animateCubeBtn = document.getElementById("cube-animate-cube");
   const inputs = new InputList("cube",
-    ["tx", 0, updateCube], ["ty", 0, updateCube], ["tz", 0, updateCube],
-    ["rx", 0, updateCube], ["ry", 0, updateCube], ["rz", 0, updateCube]
+    ["tx", 0, false, updateCube], ["ty", 0, false, updateCube], ["tz", 0, false, updateCube],
+    ["rx", 0, false, updateCube], ["ry", 0, false, updateCube], ["rz", 0, false, updateCube]
   );
 
   function updateCube() {

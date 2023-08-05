@@ -1,19 +1,19 @@
 export default class TabList {
-  constructor(...tabs) {
-    this._tabs = {};
-    this._currentTab = null;
+  #tabs = {};
+  #currentTab = null;
 
+  constructor(...tabs) {
     this.addTabs(...tabs);
 
-    if (this._currentTab === null) {
-      this._currentTab = this._tabs[tabs[0][0]].elem;
-      this._currentTab.dataset.selected = true;
+    if (this.#currentTab === null) {
+      this.#currentTab = this.#tabs[tabs[0][0]].elem;
+      this.#currentTab.dataset.selected = true;
     }
 
-    const name = this._currentTab.dataset.tab;
+    const name = this.#currentTab.dataset.tab;
 
-    if (this._tabs[name].onOpen) {
-      this._tabs[name].onOpen?.();
+    if (this.#tabs[name].onOpen) {
+      this.#tabs[name].onOpen?.();
     }
     else {
       document.querySelector(`.tab[data-tab="${name}"]`).style.display = "block";
@@ -24,44 +24,48 @@ export default class TabList {
     for (const tab of tabs) {
       const [ name, onOpen, onClose ] = tab;
 
-      this._tabs[name] ??= {
+      this.#tabs[name] ??= {
         elem: document.querySelector(`.tabitem[data-tab="${name}"]`),
         onOpen,
         onClose
       };
-      this._tabs[name].elem.addEventListener("click", this._clickEvent);
+      this.#tabs[name].elem.addEventListener("click", this.#clickEvent);
 
-      if (this._tabs[name].elem.dataset.selected) {
-        this._currentTab = this._tabs[name].elem;
+      if (this.#tabs[name].elem.dataset.selected) {
+        this.#currentTab = this.#tabs[name].elem;
       }
     }
   }
 
-  _clickEvent = (event) => {
+  #clickEvent = (event) => {
     {
-      const name = this._currentTab.dataset.tab;
+      const name = this.#currentTab.dataset.tab;
 
-      if (this._tabs[name].onClose) {
-        this._tabs[name].onClose?.();
+      if (this.#tabs[name].onClose) {
+        this.#tabs[name].onClose?.();
       }
       else {
         document.querySelector(`.tab[data-tab="${name}"]`).style.display = "none";
       }
-      delete this._currentTab.dataset.selected;
+      delete this.#currentTab.dataset.selected;
     }
 
-    this._currentTab = event.target;
-    this._currentTab.dataset.selected = true;
+    this.#currentTab = event.target;
+    this.#currentTab.dataset.selected = true;
 
     {
-      const name = this._currentTab.dataset.tab;
+      const name = this.#currentTab.dataset.tab;
 
-      if (this._tabs[name].onOpen) {
-        this._tabs[name].onOpen?.();
+      if (this.#tabs[name].onOpen) {
+        this.#tabs[name].onOpen?.();
       }
       else {
         document.querySelector(`.tab[data-tab="${name}"]`).style.display = "block";
       }
     }
+  }
+
+  get currentTab() {
+    return this.#currentTab.dataset.tab;
   }
 }
