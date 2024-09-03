@@ -26,7 +26,9 @@ const World = (function() {
     ["down", "c"]
   );
   const inputs = new InputList("world", 
-    ["ms", 0.25], ["perspective", 300, false, setPerspective]
+    ["ms", 0.25],
+    ["perspective", 300, false, setPerspective],
+    ["speed", 1.5, false, setPlayerSpeed]
   );
   const tabs = new TabList(
     [
@@ -78,6 +80,10 @@ const World = (function() {
   let elapsed = 0;
   let prevTimestamp = 0;
 
+  function setPlayerSpeed(value) {
+    playerData.speed = value;
+  }
+
   function setPerspective(value) {
     container.style.perspective = `${value}px`;
     updateWorld();
@@ -96,6 +102,7 @@ const World = (function() {
   }
   
   function updatePlayer() {
+    const moveSpeed = inputs.getValue("speed");
     const cosSpeed = Math.cos(playerData.rotation.y * (Math.PI / 180)) * playerData.speed;
     const sinSpeed = Math.sin(playerData.rotation.y * (Math.PI / 180)) * playerData.speed
   
